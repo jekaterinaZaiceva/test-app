@@ -1,0 +1,25 @@
+.username{
+        text-align:  center;
+        font-size: 200%;
+        color: green;
+        border-bottom: 2px solid maroon;
+        font-weight: normal;
+        padding-bottom: 5px;
+    }
+
+.my_name{
+        font-size: 40px;
+        color:blue;
+     }
+
+.blog_text{
+        font-size: 30px;
+        color:black;
+}
+.back{
+        font-size:20px;
+        text-align: right;
+}
+.back_text{
+        color:green;
+}

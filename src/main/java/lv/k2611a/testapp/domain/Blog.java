@@ -1,7 +1,7 @@
 package lv.k2611a.testapp.domain;
 
 /**
- * Created by jekaterina.zaiceva on 08.10.2014.
+ * Cдомен блог
  */
 public class Blog {
     private String name;

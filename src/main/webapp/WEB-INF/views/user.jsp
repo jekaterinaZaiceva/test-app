@@ -6,12 +6,15 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" href="/test-mvn-app/resources/css/user.css"/>
+</head>
 <body>
+<div class="username"><span class="my_name">Я - ${user}</span></div>
 
-<h1>My Blogs Page</h1>
-<h1>${user}</h1>
-<ul>
+<div class="my_blogs">Мои блоги:</div>
 
+<ul class="blogName">
 <c:forEach var="blog" items="${blogs}">
 <a href = "http://localhost:9090/test-mvn-app/user/${blog.userId}/blog/${blog.blogId}">
     <li>${blog.name}</li></a>

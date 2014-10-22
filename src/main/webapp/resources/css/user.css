@@ -1,0 +1,27 @@
+
+.username{
+        text-align:  center;
+        font-size: 200%;
+        color: green;
+        border-bottom: 2px solid maroon;
+        font-weight: normal;
+        padding-bottom: 5px;
+    }
+.my_blogs{
+        text-shadow: 5px 5px 5px green;
+        font-size:30px;
+}
+.my_name{
+        font-size: 40px;
+}
+ul.blogName{
+        margin: 10;
+        padding: 4px;
+        font-size: 200%;
+}
+ul.blogName li{
+       display: inline;
+       margin-right: 5px;
+       border: 5px solid green;
+       padding: 3px;
+}

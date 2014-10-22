@@ -6,17 +6,28 @@ package lv.k2611a.testapp.domain;
  */
 public class User {
 
-   private String name;
+    private long id;
+    private String name;
 
-    public User(String name){
+
+    public User(long id, String name) {
+        this.id = id;
         this.name = name;
     }
 
     public String getName() {
-     return name;
+        return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

@@ -8,7 +8,7 @@ import javax.annotation.PostConstruct;
 import java.util.*;
 
 /**
- * Created by jekaterina.zaiceva on 08.10.2014.
+ * сервис блоков
  */
 @Service
 public class BlogsService {
@@ -18,10 +18,14 @@ public class BlogsService {
     @PostConstruct
     public void init() {
         blogs = new HashMap<Integer, Blog>();
-        blogs.put(1, new Blog("family", 1,"tekstik u bloga 1",1));
-        blogs.put(2, new Blog("rest", 2, "tekstik u bloga 2",3));
-        blogs.put(3, new Blog("my private", 1,"tekstik u bloga 3",3));
-        blogs.put(4, new Blog("horse",2, "tekstik u bloga 4",4));
+
+        put(new Blog("Семья", 1,"У Меня большая семья",1));
+        put(new Blog("Отдых", 2, "Я люблю отдыхать на природе",2));
+        put(new Blog("Работа", 1,"У меня интересная работа",3));
+        put(new Blog("Лошадка",2, "Мою лошадку зовут Эбигейла, ей 6 лет",4));
+    }
+    private void put(Blog blog){
+        blogs.put(blog.getBlogId(),blog);
     }
 
     public List<Blog> getAllByUser(long userId) {
@@ -34,7 +38,6 @@ public class BlogsService {
         }
         return userBlogs;
     }
-
 
     public Blog getBlogById(Integer blogIndex){
         if(blogs.containsKey(blogIndex)){

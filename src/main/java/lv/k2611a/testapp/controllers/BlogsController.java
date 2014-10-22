@@ -14,7 +14,7 @@ import java.util.List;
 
 
 /**
- * Created by jekaterina.zaiceva on 08.10.2014.
+ * контроллер блога
  */
 @Controller
 public class BlogsController {
@@ -27,7 +27,6 @@ public class BlogsController {
 
     @RequestMapping(value = "/user/{userId}/blog/{blogId}")
     public String getMainPage(Model model, @PathVariable Long userId, @PathVariable Integer blogId) {
-
         User user = userService.getUserById(userId);
         if (user == null) {
             return "404";
@@ -39,6 +38,7 @@ public class BlogsController {
            return "404";
         }
         model.addAttribute("blog", blog.getText());
+        model.addAttribute("userId", blog.getUserId());
         return "blog";
     }
 }

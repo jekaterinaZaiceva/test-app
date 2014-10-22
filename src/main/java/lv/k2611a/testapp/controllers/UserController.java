@@ -16,7 +16,7 @@ import java.util.Map;
 
 
 /**
- *
+ * контроллер пользователя
  */
 @Controller
 public class UserController {
@@ -40,7 +40,5 @@ public class UserController {
         model.addAttribute("blogs",blogs);
 
         return "user";
-
     }
-
 }

@@ -13,23 +13,30 @@ import java.util.Map;
 @Service
 public class UserService {
 
-    private Map<Integer,User> users;
+    private Map<Long,User> users;
 
     @PostConstruct
     public void init() {
-        users = new HashMap<Integer, User>();
-        users.put(1, new User("Kirill"));
-        users.put(2, new User("Katja"));
-        users.put(3, new User("Anzella"));
-        users.put(4, new User("Kolja"));
+        users = new HashMap<Long, User>();
+        put(new User(1, "Kirill"));
+        put(new User(2,"Katja"));
+        put(new User(3,"Anzella"));
+        put(new User(4,"Kolja"));
     }
 
-    public Map<Integer,User> getAll(){
+    private void put(User u) {
+        if (users.containsKey(u.getId())) {
+            throw new IllegalArgumentException("User with id " + u.getId() + " already exists");
+        }
+        users.put(u.getId(), u);
+    }
+
+    public Map<Long,User> getAll(){
         return users;
     }
 
     public User getUserById(long id){
-        Integer userId = Integer.valueOf(String.valueOf(id));
+        long userId = id;
         if(users.containsKey(userId)){
             User user = users.get(userId);
             return user;

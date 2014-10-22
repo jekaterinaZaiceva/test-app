@@ -6,11 +6,15 @@
 
 <!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" href="/test-mvn-app/resources/css/blog.css"/>
+<meta cherser="UTF-8">
+<title>Document</title>
+</head>
+
 <body>
-
-<h1>My First Heading</h1>
-<p> ${user}  </p>
-
-<p> ${blog}  </p>
+<div class="username"><span class="my_name">Я - ${user}</span></div>
+<div class="back"><a href = "http://localhost:9090/test-mvn-app/user/${userId}"><span class="back_text">Вернутся</span></a></div>
+<span class="blog_text"> ${blog}  </span>
 </body>
 </html>
