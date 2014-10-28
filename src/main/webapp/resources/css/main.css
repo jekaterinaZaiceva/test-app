@@ -1,0 +1,76 @@
+
+.username{
+        text-align:  center;
+        font-size: 200%;
+        color: green;
+        border-bottom: 2px solid maroon;
+        font-weight: normal;
+        padding-bottom: 5px;
+        }
+.my_name{
+        font-size: 40px;
+         }
+.content {
+    margin: 10px;10px;
+    float: right;
+    width: 75%;
+    }
+        .my_blogs{
+            text-shadow: 5px 5px 5px green;
+            font-size:30px;
+            }
+
+        ul.blogName{
+            margin: 10px;10px;
+            padding: 4px;
+            font-size: 200%;
+            }
+        ul.blogName li{
+                display: inline;
+                margin-right: 5px;
+                border: 5px solid green;
+                padding: 3px;
+                }
+.back{
+        font-size:20px;
+        text-align: right;
+        margin: 10px;10px;
+        }
+    .back_text{
+            color:green;
+            }
+
+.blog_text{
+        margin: 10px;10px;
+        font-size: 30px;
+        color:black;
+        }
+.side_bar {
+        margin: 10px 10px;
+        float: left;
+        width: 20%;
+        }
+        .add_blog{
+                font:15px Verdana;
+                font-weight:900;
+                vertical-align:top;
+                }
+        .formname{
+                font:15px Verdana;color: #88B98F;
+                margin: 0 0 0 30px;
+                font-weight:900;
+                vertical-align:top;
+                }
+                .form_text{
+                    width: 130px;
+                     border:solid 1px #329C6B;
+                    background-color:#fff;
+                    margin: 0 0 1px 0;
+                    }
+                .formbutton{
+                    cursor:pointer;
+                    font:14px Verdana;color: #64A46D;
+                    font-weight:900;
+                    background-color:#F1F8F2;
+                    border:solid 1px #329C6B;
+                    }

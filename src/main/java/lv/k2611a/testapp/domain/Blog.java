@@ -1,31 +1,34 @@
 package lv.k2611a.testapp.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Cдомен блог
  */
 public class Blog {
     private String name;
     private long userId;
+    private long blogId;
+    private List<String> text = new ArrayList<String>();
 
-    public Integer getBlogId() {
+    public long getBlogId() {
         return blogId;
     }
 
-    public void setBlogId(Integer blogId) {
+    public void setBlogId(int blogId) {
         this.blogId = blogId;
     }
 
-    private Integer blogId;
 
-    public String getText() {
+    public List getText() {
         return text;
     }
 
-    private String text;
-    public Blog(String name, long userId, String text, Integer blogId) {
+    public Blog(String name, long userId, String text, long blogId) {
         this.name = name;
         this.userId = userId;
-        this.text = text;
+        this.text.add(text);
         this.blogId = blogId;
     }
 
@@ -34,7 +37,7 @@ public class Blog {
     }
 
     public void setText(String text) {
-        this.text = text;
+        this.text.add(text);
     }
 
     public long getUserId() {

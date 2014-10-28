@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 import java.util.List;
@@ -26,19 +28,26 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/user/{userId}")
-    public String getMainPage(Model model, @PathVariable Long userId) {
-        List<Blog> blogs = blogsService.getAllByUser(userId);
-        if (blogs == null) {
-            return "404";
-        }
+    @RequestMapping(value = "/user/{userId}",method = RequestMethod.GET)
+    public String getUserPage(Model model, @PathVariable Long userId) {
         User user = userService.getUserById(userId);
         if (user == null) {
             return "404";
         }
-        model.addAttribute("user",user.getName());
+        List<Blog> blogs = blogsService.getAllByUser(userId);
+        model.addAttribute("user",user);
         model.addAttribute("blogs",blogs);
 
         return "user";
+    }
+
+    @RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)
+    public String addBlog(
+            Model model,
+            @PathVariable long userId,
+            @RequestParam("blogName") String blogName) {
+        blogsService.addBlog(blogName,userId,null);
+
+        return getUserPage(model, userId);
     }
 }

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,19 +28,31 @@ public class BlogsController {
     private UserService userService;
 
     @RequestMapping(value = "/user/{userId}/blog/{blogId}")
-    public String getMainPage(Model model, @PathVariable Long userId, @PathVariable Integer blogId) {
+    public String getBlogPage(Model model, @PathVariable Long userId, @PathVariable long blogId) {
         User user = userService.getUserById(userId);
         if (user == null) {
             return "404";
         }
-        model.addAttribute("user",user.getName());
+        model.addAttribute("userName", user.getName());
 
         Blog blog = blogsService.getBlogById(blogId);
         if (blog == null) {
-           return "404";
+            return "404";
         }
-        model.addAttribute("blog", blog.getText());
+        model.addAttribute("blogsText", blog.getText());
         model.addAttribute("userId", blog.getUserId());
+        model.addAttribute("blog",blog);
         return "blog";
+
+    }
+
+    @RequestMapping(value = "/user/{userId}/blog/{blogId}", method = RequestMethod.POST)
+    public String addBlogText(Model model,
+                              @PathVariable long userId,
+                              @PathVariable long blogId,
+                              @RequestParam("blogText") String blogText) {
+        blogsService.addBlogText(blogId, userId, blogText);
+
+        return getBlogPage(model, userId, blogId);
     }
 }

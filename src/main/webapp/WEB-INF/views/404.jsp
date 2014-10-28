@@ -6,9 +6,8 @@
 
 <!DOCTYPE html>
 <html>
-<body>
+    <body>
 
-<h1>Sorry, this page was not found. Better luck next time.</h1>
-
-</body>
-</html>
+        <h1>Sorry, this page was not found. Better luck next time.</h1>
+    </body>
+   </html>

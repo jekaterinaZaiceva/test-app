@@ -13,11 +13,11 @@ import java.util.*;
 @Service
 public class BlogsService {
 
-    private Map<Integer,Blog> blogs;
+    private Map<Long,Blog> blogs;
 
     @PostConstruct
     public void init() {
-        blogs = new HashMap<Integer, Blog>();
+        blogs = new HashMap<Long, Blog>();
 
         put(new Blog("Семья", 1,"У Меня большая семья",1));
         put(new Blog("Отдых", 2, "Я люблю отдыхать на природе",2));
@@ -25,6 +25,9 @@ public class BlogsService {
         put(new Blog("Лошадка",2, "Мою лошадку зовут Эбигейла, ей 6 лет",4));
     }
     private void put(Blog blog){
+        if (blogs.containsKey(blog.getBlogId())) {
+            throw new IllegalArgumentException("User with id " + blog.getBlogId() + " already exists");
+        }
         blogs.put(blog.getBlogId(),blog);
     }
 
@@ -39,11 +42,27 @@ public class BlogsService {
         return userBlogs;
     }
 
-    public Blog getBlogById(Integer blogIndex){
-        if(blogs.containsKey(blogIndex)){
+    public Blog getBlogById(long blogIndex){
             return blogs.get(blogIndex);
+    }
+
+    public void addBlog(String blogName,long userId, String blogText){
+        if (blogName == null) {
+            throw new IllegalArgumentException("Empty text");
         }
-        return null;
+
+        long newBlogId = System.currentTimeMillis();
+        put(new Blog(blogName,userId,blogText,newBlogId));
+    }
+    public void addBlogText(long blogid, long userId, String blogText){
+        if (blogText == null) {
+            throw new IllegalArgumentException("Empty text");
+        }
+            Blog blog = getBlogById(blogid);
+            if (blog.getUserId()==userId) {
+                blog.setText(blogText);
+            }
+            else throw new IllegalArgumentException("Wrong user id");
     }
 
 }
