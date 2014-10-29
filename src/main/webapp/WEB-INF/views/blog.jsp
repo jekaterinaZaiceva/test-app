@@ -14,10 +14,10 @@
 
     <body>
         <div class="username">
-            <span class="my_name">Я - ${userName}</span>
+            <span class="my_name">Я - ${user.name}</span>
         </div>
-          <div class="my_blogs"><a href = "http://localhost:9090/test-mvn-app/user/${userId}" class="back_text">${blog.name}</a></div>
-        <div class="back"><a href = "http://localhost:9090/test-mvn-app/user/${userId}" class="back_text">Вернутся</a></div>
+          <div class="my_blogs"><a href = "http://localhost:9090/test-mvn-app/user/${blog.userId}" class="back_text">${blog.name}</a></div>
+        <div class="back"><a href = "http://localhost:9090/test-mvn-app/user/${blog.userId}" class="back_text">Вернутся</a></div>
          <div class="side_bar">
                     <span class="add_blog">Добавить текст блога:</span>
                     <form action="" method="POST">
@@ -28,7 +28,7 @@
                 </div>
          <div class="content">
             <div class="blog_text">
-                <c:forEach var="blog" items="${blogsText}">
+                <c:forEach var="blog" items="${blog.textList}">
                                 <li>
                                         ${blog}
                                 </li>

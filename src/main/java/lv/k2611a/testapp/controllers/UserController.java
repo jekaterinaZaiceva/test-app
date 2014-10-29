@@ -46,7 +46,7 @@ public class UserController {
             Model model,
             @PathVariable long userId,
             @RequestParam("blogName") String blogName) {
-        blogsService.addBlog(blogName,userId,null);
+        blogsService.addBlog(blogName,userId);
 
         return getUserPage(model, userId);
     }

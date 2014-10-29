@@ -10,7 +10,7 @@ public class Blog {
     private String name;
     private long userId;
     private long blogId;
-    private List<String> text = new ArrayList<String>();
+    private List<String> textList = new ArrayList<String>();
 
     public long getBlogId() {
         return blogId;
@@ -21,15 +21,24 @@ public class Blog {
     }
 
 
-    public List getText() {
-        return text;
+    public List getTextList() {
+        return textList;
+    }
+
+    public Blog(String name, long userId) {
+        this.name = name;
+        this.userId = userId;
+       // this.blogId = blogId;
     }
 
     public Blog(String name, long userId, String text, long blogId) {
+        if (text == null) {
+            throw new IllegalArgumentException("Text cannot be null");
+        }
         this.name = name;
         this.userId = userId;
-        this.text.add(text);
         this.blogId = blogId;
+        this.textList.add(text);
     }
 
     public String getName() {
@@ -37,7 +46,10 @@ public class Blog {
     }
 
     public void setText(String text) {
-        this.text.add(text);
+        if (text == null) {
+            throw new IllegalArgumentException("Text cannot be null");
+        }
+        this.textList.add(text);
     }
 
     public long getUserId() {

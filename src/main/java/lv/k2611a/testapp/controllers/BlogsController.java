@@ -33,14 +33,12 @@ public class BlogsController {
         if (user == null) {
             return "404";
         }
-        model.addAttribute("userName", user.getName());
+        model.addAttribute("user", user);
 
         Blog blog = blogsService.getBlogById(blogId);
         if (blog == null) {
             return "404";
         }
-        model.addAttribute("blogsText", blog.getText());
-        model.addAttribute("userId", blog.getUserId());
         model.addAttribute("blog",blog);
         return "blog";
 
