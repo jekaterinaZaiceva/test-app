@@ -28,6 +28,7 @@ public class BlogsService {
 
     private void put(Blog blog) {
         blogId++;
+        blog.setBlogId(blogId);
         blogs.put(blog.getBlogId(), blog);
     }
 

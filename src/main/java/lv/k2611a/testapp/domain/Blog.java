@@ -16,7 +16,7 @@ public class Blog {
         return blogId;
     }
 
-    public void setBlogId(int blogId) {
+    public void setBlogId(long blogId) {
         this.blogId = blogId;
     }
 
@@ -28,7 +28,7 @@ public class Blog {
     public Blog(String name, long userId) {
         this.name = name;
         this.userId = userId;
-       // this.blogId = blogId;
+        //this.blogId = blogId;
     }
 
     public Blog(String name, long userId, String text, long blogId) {
