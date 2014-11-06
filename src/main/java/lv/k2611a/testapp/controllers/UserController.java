@@ -2,7 +2,7 @@ package lv.k2611a.testapp.controllers;
 
 import lv.k2611a.testapp.domain.Blog;
 import lv.k2611a.testapp.domain.User;
-import lv.k2611a.testapp.services.BlogsService;
+import lv.k2611a.testapp.services.BlogService;
 import lv.k2611a.testapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,19 +23,19 @@ import java.util.Map;
 public class UserController {
 
     @Autowired
-    private BlogsService blogsService;
+    private BlogService blogService;
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/user/{userId}",method = RequestMethod.GET)
+    @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     public String getUserPage(Model model, @PathVariable Long userId) {
         User user = userService.getUserById(userId);
         if (user == null) {
             return "404";
         }
-        List<Blog> blogs = blogsService.getAllByUser(userId);
-        model.addAttribute("user",user);
-        model.addAttribute("blogs",blogs);
+        List<Blog> blogs = blogService.getAllByUser(userId);
+        model.addAttribute("user", user);
+        model.addAttribute("blogs", blogs);
 
         return "user";
     }
@@ -46,8 +45,16 @@ public class UserController {
             Model model,
             @PathVariable long userId,
             @RequestParam("blogName") String blogName) {
-        blogsService.addBlog(blogName,userId);
+        blogService.addBlog(blogName, userId);
 
         return getUserPage(model, userId);
+    }
+
+    @RequestMapping(value = "/users", method = RequestMethod.GET)
+    public String allUsers(Model model) {
+        Map<Long, User> users = userService.getAll();
+        model.addAttribute("users", users);
+
+        return "allUser";
     }
 }

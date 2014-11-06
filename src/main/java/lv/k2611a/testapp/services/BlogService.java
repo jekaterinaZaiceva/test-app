@@ -11,7 +11,7 @@ import java.util.*;
  * сервис блоков
  */
 @Service
-public class BlogsService {
+public class BlogService {
 
     private Map<Long, Blog> blogs;
     private long blogId;
@@ -20,10 +20,10 @@ public class BlogsService {
     public void init() {
         blogs = new HashMap<Long, Blog>();
 
-        put(new Blog("Семья", 1, "У Меня большая семья", 1));
-        put(new Blog("Отдых", 2, "Я люблю отдыхать на природе", 2));
-        put(new Blog("Работа", 1, "У меня интересная работа", 3));
-        put(new Blog("Лошадка", 2, "Мою лошадку зовут Эбигейла, ей 6 лет", 4));
+        put(new Blog("Семья", 1, "У Меня большая семья"));
+        put(new Blog("Отдых", 2, "Я люблю отдыхать на природе"));
+        put(new Blog("Работа", 1, "У меня интересная работа"));
+        put(new Blog("Лошадка", 2, "Мою лошадку зовут Эбигейла, ей 6 лет"));
     }
 
     private void put(Blog blog) {
@@ -56,11 +56,11 @@ public class BlogsService {
         put(blog);
     }
 
-    public void addBlogText(long blogid, long userId, String blogText) {
+    public void addBlogText(long blogId, long userId, String blogText) {
         if (blogText == null) {
             throw new IllegalArgumentException("Empty text");
         }
-        Blog blog = getBlogById(blogid);
+        Blog blog = getBlogById(blogId);
         if (blog.getUserId() == userId) {
             blog.setText(blogText);
         } else {

@@ -1,9 +1,5 @@
 package lv.k2611a.testapp.domain;
 
-
-/**
- * доменное имя юзера
- */
 public class User {
 
     private long id;

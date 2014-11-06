@@ -13,15 +13,15 @@ import java.util.Map;
 @Service
 public class UserService {
 
-    private Map<Long,User> users;
+    private Map<Long, User> users;
 
     @PostConstruct
     public void init() {
         users = new HashMap<Long, User>();
         put(new User(1, "Kirill"));
-        put(new User(2,"Katja"));
-        put(new User(3,"Anzella"));
-        put(new User(4,"Kolja"));
+        put(new User(2, "Katja"));
+        put(new User(3, "Anzella"));
+        put(new User(4, "Kolja"));
     }
 
     private void put(User u) {
@@ -31,13 +31,13 @@ public class UserService {
         users.put(u.getId(), u);
     }
 
-    public Map<Long,User> getAll(){
+    public Map<Long, User> getAll() {
         return users;
     }
 
-    public User getUserById(long id){
+    public User getUserById(long id) {
         long userId = id;
-        if(users.containsKey(userId)){
+        if (users.containsKey(userId)) {
             User user = users.get(userId);
             return user;
 
