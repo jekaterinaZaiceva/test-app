@@ -17,18 +17,22 @@
     </div>
 
      <div class="content">
-        <form:form method="POST" action="login" modelAttribute="loginInfo" role="form">
+        <form:form method="POST" action="login" role="form">
             <div class="login-form">
-                <label for="username">Логин</label>
-                <form:input placeholder="username" path="username" id="username"/>
+                <label for="userName">Логин</label>
+                <input type="text" name="userName" value="" id="userName"/>
             </div>
             <div class="login-form">
                 <label for="password">Пароль</label>
-                <form:input placeholder="password" type="password" path="password" id="password"/>
+                <input type="password" name="password" value="" id="password"/>
             </div>
             <input class="btn btn-default" type="submit" value="Логин"/>
         </form:form>
     </div>
+   <c:if test="${not empty error}">
+        <div>Выьввели неправильный логин или пароль. Попробуйте еше раз</div>
+   </c:if>
+
 
 </body>
 </html>

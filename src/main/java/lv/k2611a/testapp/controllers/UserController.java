@@ -29,6 +29,7 @@ public class UserController {
 
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     public String getUserPage(Model model, @PathVariable Long userId) {
+
         User user = userService.getUserById(userId);
         if (user == null) {
             return "404";
@@ -57,4 +58,7 @@ public class UserController {
 
         return "allUser";
     }
+
+
+
 }

@@ -14,8 +14,7 @@ import java.util.List;
 @Controller
 public class MainLoginController {
     @RequestMapping(value = "/", method = RequestMethod.GET)
-    public String login(Model model) {
-        model.addAttribute("loginInfo", new LoginInfo());
+    public String login() {
         return "index";
     }
 }
