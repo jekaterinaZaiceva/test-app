@@ -62,8 +62,8 @@ public class UserController {
     public String deleteUser(
             Model model,
             @RequestParam("userId") Long userId){
-        userService.deleteUser(userId);
-        blogService.deleteUserBlogs(userId);
+        List<Blog> allByUser = blogService.getAllByUser(userId);
+        userService.deleteUser(userId, allByUser);
         return getallUsersPage(model);
     }
 

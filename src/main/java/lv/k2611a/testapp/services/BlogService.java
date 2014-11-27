@@ -67,16 +67,5 @@ public class BlogService {
             throw new IllegalArgumentException("Wrong user id");
         }
     }
-    public void deleteUserBlogs(Long userId){
-        if (userId == null) {
-            throw new IllegalArgumentException("Empty user");
-        }
-        List<Blog> allByUser = getAllByUser(userId);
-        if (allByUser.isEmpty()){
-            throw new IllegalArgumentException("User with id " +userId + " doesn't has blogs");
-        }
-        allByUser.clear();
-
-    }
 
 }

@@ -79,12 +79,20 @@ public class UserService {
 
     }
 
-    public void deleteUser(Long userId) {
+    public void deleteUser(Long userId, List<Blog> allByUser) {
         if (userId == null) {
             throw new IllegalArgumentException("Empty user");
         }
         User user = getUserById(userId);
         users.remove(userId);
         userNameMap.remove(user);
+
+        try{allByUser.clear();
+            }
+        catch (IllegalArgumentException e){
+
+        };
+
+
     }
 }
