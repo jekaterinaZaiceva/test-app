@@ -14,19 +14,23 @@
         <div class="username">
             <span class="my_name">Все пользователи</span>
         </div>
-        <div class="side_bar">
-        </div>
-        <div class="content">
-            <ul class="blogName">
+
+            <div class="users">
                 <c:forEach var="user" items="${users}">
-                    <li>
                         <a href = "/test-mvn-app/user/${user.value.id}">
                             ${user.value.name}
                          </a>
-                    </li>
+
+                    <div class="delete">
+                        <form action="" method="POST">
+                              <input type="hidden" name="userId" value = "${user.value.id}"><br>
+                              <input type="submit" value="Удалить" class="formbutton">
+                        </form>
+                    </div>
+
                 </c:forEach>
-            </ul>
-         </div>
+            </div>
+
 
     </body>
 </html>

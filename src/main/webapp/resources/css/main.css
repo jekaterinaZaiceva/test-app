@@ -74,41 +74,13 @@
                     background-color:#F1F8F2;
                     border:solid 1px #329C6B;
                     }
-
-
-#login-form fieldset:before {
-	background-color: #fff;
-	content: "";
-	height: 8px;
-	left: 50%;
-	margin: -4px 0 0 -4px;
-	position: absolute;
-	top: 0;
-	-webkit-transform: rotate(45deg);
-	-moz-transform: rotate(45deg);
-	-ms-transform: rotate(45deg);
-	-o-transform: rotate(45deg);
-	transform: rotate(45deg);
-	width: 8px;
-}
-
-#login-form input {
-	font-size: 14px;
-}
-
-#login-form input[type="password"] {
-	border-top: none;
-	border-radius: 0px 0px 3px 3px;
-}
-
-#login-form input[type="submit"] {
-	background: #1dabb8;
-	border-radius: 3px;
-	color: #fff;
-	float: right;
-	font-weight: bold;
-	margin-top: 20px;
-	padding: 12px 20px;
-}
-
-#login-form input[type="submit"]:hover { background: #198d98; }
+.users{
+         top: left;
+         margin: 10px;10px;
+         font-size: 30px;
+        }
+.delete{
+        float: left;
+        margin: 10px;10px;
+        font-size: 30px;
+        }

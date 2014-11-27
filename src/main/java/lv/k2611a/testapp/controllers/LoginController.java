@@ -44,7 +44,7 @@ public class LoginController {
         return "404";
     }
 
-    @RequestMapping(value = "/logout", method = RequestMethod.GET)
+    @RequestMapping(value = "/logout", method = RequestMethod.POST)
     public String doLogout(HttpSession session) {
         session.invalidate();
         return "redirect:";

@@ -78,4 +78,13 @@ public class UserService {
         return false;
 
     }
+
+    public void deleteUser(Long userId) {
+        if (userId == null) {
+            throw new IllegalArgumentException("Empty user");
+        }
+        User user = getUserById(userId);
+        users.remove(userId);
+        userNameMap.remove(user);
+    }
 }

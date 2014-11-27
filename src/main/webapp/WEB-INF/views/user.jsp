@@ -12,7 +12,11 @@
         </head>
     <body>
         <div class="username"><span class="my_name">Приветствуем - ${user.name}</span></div>
-        <div class="back"><a href = "/test-mvn-app/logout">Выйти</a></div>
+        <div class="back">
+            <form action="/test-mvn-app/logout" method="POST">
+                 <input type="submit" value="Выйти" class="back">
+            </form>
+        </div>
         <div class="my_blogs"><a href = "/test-mvn-app/users" class="back_text">Все пользователи</a></div>
         <div class="side_bar">
             <span class="add_blog">Добавить блог:</span>

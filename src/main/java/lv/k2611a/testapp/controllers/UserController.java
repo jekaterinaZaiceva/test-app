@@ -52,11 +52,19 @@ public class UserController {
     }
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
-    public String allUsers(Model model) {
+    public String getallUsersPage(Model model) {
         Map<Long, User> users = userService.getAll();
         model.addAttribute("users", users);
 
         return "allUser";
+    }
+    @RequestMapping(value = "/users", method  = RequestMethod.POST)
+    public String deleteUser(
+            Model model,
+            @RequestParam("userId") Long userId){
+        userService.deleteUser(userId);
+        blogService.deleteUserBlogs(userId);
+        return getallUsersPage(model);
     }
 
 
