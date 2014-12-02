@@ -43,6 +43,7 @@ public class BlogService {
         return userBlogs;
     }
 
+
     public Blog getBlogById(long blogIndex) {
         return blogs.get(blogIndex);
     }
@@ -66,6 +67,18 @@ public class BlogService {
         } else {
             throw new IllegalArgumentException("Wrong user id");
         }
+    }
+
+    public void deleteUserBlogs(Long userId) {
+        if (userId == null) {
+            throw new IllegalArgumentException("Empty user");
+        }
+        List<Blog> allByUser = getAllByUser(userId);
+        if (allByUser.isEmpty()) {
+            throw new IllegalArgumentException("User with id " + userId + " doesn't has blogs");
+        }
+        allByUser.clear();
+
     }
 
 }

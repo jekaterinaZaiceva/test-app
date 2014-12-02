@@ -58,15 +58,15 @@ public class UserController {
 
         return "allUser";
     }
-    @RequestMapping(value = "/users", method  = RequestMethod.POST)
+
+    @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String deleteUser(
             Model model,
-            @RequestParam("userId") Long userId){
-        List<Blog> allByUser = blogService.getAllByUser(userId);
-        userService.deleteUser(userId, allByUser);
+            @RequestParam("userId") Long userId) {
+        //List<Blog> allByUser = blogService.getAllByUser(userId);
+        userService.deleteUser(userId);
         return getallUsersPage(model);
     }
-
 
 
 }
