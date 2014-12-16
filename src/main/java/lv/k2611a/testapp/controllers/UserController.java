@@ -62,8 +62,7 @@ public class UserController {
     @RequestMapping(value = "/users", method = RequestMethod.POST)
     public String deleteUser(
             Model model,
-            @RequestParam("userId") Long userId) {
-        //List<Blog> allByUser = blogService.getAllByUser(userId);
+            @RequestParam("userId") long userId) {
         userService.deleteUser(userId);
         return getallUsersPage(model);
     }

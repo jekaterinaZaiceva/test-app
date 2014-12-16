@@ -30,7 +30,7 @@
         </form:form>
     </div>
    <c:if test="${not empty error}">
-        <div>Такой логин уже существует. Попробуйте другой</div>
+        <div>${error}</div>
    </c:if>
 
 

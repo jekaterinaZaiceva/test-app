@@ -20,10 +20,10 @@ public class BlogService {
     public void init() {
         blogs = new HashMap<Long, Blog>();
 
-        put(new Blog("Семья", 1, "У Меня большая семья"));
-        put(new Blog("Отдых", 2, "Я люблю отдыхать на природе"));
-        put(new Blog("Работа", 1, "У меня интересная работа"));
-        put(new Blog("Лошадка", 2, "Мою лошадку зовут Эбигейла, ей 6 лет"));
+        put(new Blog("Семья", 0, "У Меня большая семья"));
+        put(new Blog("Отдых", 1, "Я люблю отдыхать на природе"));
+        put(new Blog("Работа", 0, "У меня интересная работа"));
+        put(new Blog("Лошадка", 1, "Мою лошадку зовут Эбигейла, ей 6 лет"));
     }
 
     private void put(Blog blog) {
@@ -69,13 +69,11 @@ public class BlogService {
         }
     }
 
-    public void deleteUserBlogs(Long userId) {
-        if (userId == null) {
-            throw new IllegalArgumentException("Empty user");
-        }
+    public void deleteUserBlogs(long userId) {
+
         List<Blog> allByUser = getAllByUser(userId);
         if (allByUser.isEmpty()) {
-            throw new IllegalArgumentException("User with id " + userId + " doesn't has blogs");
+            return;
         }
         allByUser.clear();
 

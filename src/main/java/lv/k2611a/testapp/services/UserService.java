@@ -1,9 +1,11 @@
 package lv.k2611a.testapp.services;
 
 
+import lv.k2611a.testapp.services.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import lv.k2611a.testapp.domain.User;
 
 import javax.annotation.PostConstruct;
@@ -17,15 +19,15 @@ public class UserService {
     @Autowired
     BlogService blogService;
     private Map<Long, User> users;
-    private Map<String, Long> userNameMap;
-    private Long userId = 0L;
+    private Map<String, User> userNameMap;
+    private long userId = 0L;
 
     @PostConstruct
-    public void init() {
+    public void init() throws UserAlreadyExistException, DublicatedSymbolException, SmallPasswodsException {
         users = new HashMap<Long, User>();
-        userNameMap = new HashMap<String, Long>();
+        userNameMap = new HashMap<String, User>();
 
-        registerUser( "Kirill", "passKirill");
+        registerUser("Kirill", "passKirill");
         registerUser("Katja", "passKatja");
         registerUser("Anzella", "passAnzella");
         registerUser("Kolja", "passKolja");
@@ -41,7 +43,7 @@ public class UserService {
             throw new IllegalArgumentException("User with name " + u.getName() + " already exists");
         }
         users.put(u.getId(), u);
-        userNameMap.put(u.getName(), u.getId());
+        userNameMap.put(u.getName(), u);
     }
 
     public Map<Long, User> getAll() {
@@ -58,52 +60,75 @@ public class UserService {
         return null;
     }
 
-    public Long getUserByName(String name) {
+    public User getUserByName(String name) {
         String userName = name;
         if (userNameMap.containsKey(userName)) {
-            Long userId = userNameMap.get(userName);
-            return userId;
+            User user = userNameMap.get(userName);
+            return user;
         }
         return null;
     }
 
-    public boolean authenticateUser(String userName, String password) {
-        User user = getUserById(getUserByName(userName));
-        if (user != null) {
-            if (user.getPassword().equals(password)) {
-                return true;
+    public void authenticateUser(String userName, String password) throws IncorrectPasswordException,UserNotFoundException{
+        User user = getUserByName(userName);
+        if (user == null) {
+            throw new UserNotFoundException();
             }
-        } else {
-            throw new IllegalArgumentException("User doesn't exists");
+        if (user.getPassword().equals(password)){
+            return;
         }
-        return false;
-
+        else{
+            throw new IncorrectPasswordException();
+        }
     }
 
-    public void deleteUser(Long userId) {
-        if (userId == null) {
-            throw new IllegalArgumentException("Empty user");
-        }
+    public void deleteUser(long userId) {
         User user = getUserById(userId);
         users.remove(userId);
         userNameMap.remove(user);
 
-        try {
+         blogService.deleteUserBlogs(userId);
 
-            blogService.deleteUserBlogs(userId);
-        } catch (IllegalArgumentException e) {
-
-        }
-        ;
     }
-    public void registerUser(String userName, String password){
+    public void registerUser(String userName, String password) throws UserAlreadyExistException, DublicatedSymbolException, SmallPasswodsException {
         Long id=userId++;
         if (userNameMap.containsKey(userName)) {
-            throw new IllegalArgumentException("User with name " + userName + " already exists");
+            throw new UserAlreadyExistException();
         }
+        if(!validateDublicatedSymbols(password)){
+             throw new DublicatedSymbolException();
+        }
+         if(!validLenghtPassword(password)){
+            throw new SmallPasswodsException();
+        }
+
         User user = new User(id,userName,password);
         users.put(id,user);
-        userNameMap.put(userName,id);
+        userNameMap.put(userName, user);
 
     }
+
+
+    private boolean validateDublicatedSymbols(final String password) {
+        String passwordLower = password.toLowerCase();
+        int countOfDublicated;
+        char symbol;
+        for (int i = 0; i < passwordLower.length(); ++i) {
+            countOfDublicated = 0;
+            symbol = password.charAt(i);
+            for (int j = i; j < passwordLower.length(); ++j) {
+                if (passwordLower.charAt(j) == symbol) {
+                    if (++countOfDublicated > 4) return false;
+                }
+            }
+        }
+        return true;
+    }
+    private boolean validLenghtPassword(final String password){
+        if(password.length()>4){
+            return true;
+        }
+        else return  false;
+    }
+
 }
