@@ -1,7 +1,6 @@
-package lv.k2611a.testapp.services;
+package lv.j2304z.testapp.services;
 
-import lv.k2611a.testapp.domain.Blog;
-import org.springframework.stereotype.Component;
+import lv.j2304z.testapp.domain.Blog;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -20,6 +19,20 @@ public class BlogService implements Serializable {
     private long blogId;
 
     @PostConstruct
+   // public void init() {
+   // blogs = new HashMap<Long, Blog>();
+
+    // put(new Blog("Семья", 0, "У Меня большая семья"));
+    // put(new Blog("Отдых", 1, "Я люблю отдыхать на природе"));
+    // put(new Blog("Работа", 0, "У меня интересная работа"));
+    // put(new Blog("Лошадка", 1, "Мою лошадку зовут Эбигейла, ей 6 лет"));
+   // }
+
+     //   try {
+       //     this.save();
+       // } catch (IOException e) {
+       //     e.printStackTrace();
+       // }
 
         public void init() throws IOException, ClassNotFoundException {
         try {

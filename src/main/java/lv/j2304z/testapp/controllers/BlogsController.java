@@ -1,9 +1,9 @@
-package lv.k2611a.testapp.controllers;
+package lv.j2304z.testapp.controllers;
 
-import lv.k2611a.testapp.domain.Blog;
-import lv.k2611a.testapp.domain.User;
-import lv.k2611a.testapp.services.BlogService;
-import lv.k2611a.testapp.services.UserService;
+import lv.j2304z.testapp.domain.Blog;
+import lv.j2304z.testapp.domain.User;
+import lv.j2304z.testapp.services.BlogService;
+import lv.j2304z.testapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import java.io.IOException;
 
 
 /**
@@ -47,7 +45,7 @@ public class BlogsController {
     public String addBlogText(Model model,
                               @PathVariable long userId,
                               @PathVariable long blogId,
-                              @RequestParam("blogText") String blogText) throws IOException {
+                              @RequestParam("blogText") String blogText) {
         blogService.addBlogText(blogId, userId, blogText);
 
         return getBlogPage(model, userId, blogId);

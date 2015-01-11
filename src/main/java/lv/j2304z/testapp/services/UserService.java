@@ -1,13 +1,12 @@
-package lv.k2611a.testapp.services;
+package lv.j2304z.testapp.services;
 
 
-import lv.k2611a.testapp.services.exceptions.*;
+import lv.j2304z.testapp.services.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import lv.k2611a.testapp.domain.User;
+import lv.j2304z.testapp.domain.User;
 
 import javax.annotation.PostConstruct;
-import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,9 +16,6 @@ public class UserService {
 
     @Autowired
     BlogService blogService;
-    @Autowired
-    private PasswordCheckServise passwordCheckServise;
-
     private Map<Long, User> userById;
     private Map<String, User> userByName;
     private long currentUserId = 0L;
@@ -74,7 +70,7 @@ public class UserService {
         }
     }
 
-    public void deleteUser(long userId) throws IOException {
+    public void deleteUser(long userId) {
         User user = getUserById(userId);
         userById.remove(userId);
         userByName.remove(user.getName());
@@ -87,11 +83,40 @@ public class UserService {
         if (userByName.containsKey(userName)) {
             throw new UserAlreadyExistException();
         }
-        passwordCheckServise.check(password);
+        if(!validateDublicatedSymbols(password)){
+             throw new DublicatedSymbolException();
+        }
+         if(!validLenghtPassword(password)){
+            throw new SmallPasswodsException();
+        }
+
         User user = new User(id,userName,password);
         userById.put(id, user);
         userByName.put(userName, user);
 
+    }
+
+
+    private boolean validateDublicatedSymbols(final String password) {
+        String passwordLower = password.toLowerCase();
+        int countOfDublicated;
+        char symbol;
+        for (int i = 0; i < passwordLower.length(); ++i) {
+            countOfDublicated = 0;
+            symbol = passwordLower.charAt(i);
+            for (int j = i; j < passwordLower.length(); ++j) {
+                if (passwordLower.charAt(j) == symbol) {
+                    if (++countOfDublicated > 4) return false;
+                }
+            }
+        }
+        return true;
+    }
+    private boolean validLenghtPassword(final String password){
+        if(password.length()>4){
+            return true;
+        }
+        else return  false;
     }
 
 }
