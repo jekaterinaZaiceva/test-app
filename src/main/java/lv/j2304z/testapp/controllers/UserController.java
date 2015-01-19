@@ -1,9 +1,9 @@
-package lv.k2611a.testapp.controllers;
+package lv.j2304z.testapp.controllers;
 
-import lv.k2611a.testapp.domain.Blog;
-import lv.k2611a.testapp.domain.User;
-import lv.k2611a.testapp.services.BlogService;
-import lv.k2611a.testapp.services.UserService;
+import lv.j2304z.testapp.domain.Blog;
+import lv.j2304z.testapp.domain.User;
+import lv.j2304z.testapp.services.BlogService;
+import lv.j2304z.testapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

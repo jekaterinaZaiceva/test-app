@@ -1,4 +1,4 @@
-package lv.k2611a.testapp.sessions;
+package lv.j2304z.testapp.sessions;
 
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;

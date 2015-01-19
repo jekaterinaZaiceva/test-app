@@ -1,4 +1,4 @@
-package lv.k2611a.testapp.sessions;
+package lv.j2304z.testapp.sessions;
 
 /**
  * Created by jekaterina.zaiceva on 17.11.2014.

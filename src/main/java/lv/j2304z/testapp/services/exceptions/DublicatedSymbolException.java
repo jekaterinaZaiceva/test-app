@@ -1,4 +1,4 @@
-package lv.k2611a.testapp.services.exceptions;
+package lv.j2304z.testapp.services.exceptions;
 
 /**
  * Created by jekaterina.zaiceva on 17.12.2014.

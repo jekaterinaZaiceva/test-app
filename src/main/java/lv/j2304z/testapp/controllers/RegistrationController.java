@@ -1,11 +1,11 @@
-package lv.k2611a.testapp.controllers;
+package lv.j2304z.testapp.controllers;
 
-import lv.k2611a.testapp.domain.User;
-import lv.k2611a.testapp.services.UserService;
-import lv.k2611a.testapp.services.exceptions.DublicatedSymbolException;
-import lv.k2611a.testapp.services.exceptions.SmallPasswodsException;
-import lv.k2611a.testapp.services.exceptions.UserAlreadyExistException;
-import lv.k2611a.testapp.sessions.CurrentUser;
+import lv.j2304z.testapp.domain.User;
+import lv.j2304z.testapp.services.UserService;
+import lv.j2304z.testapp.services.exceptions.DublicatedSymbolException;
+import lv.j2304z.testapp.services.exceptions.SmallPasswodsException;
+import lv.j2304z.testapp.services.exceptions.UserAlreadyExistException;
+import lv.j2304z.testapp.sessions.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

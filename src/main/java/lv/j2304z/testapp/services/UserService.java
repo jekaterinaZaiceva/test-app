@@ -1,10 +1,10 @@
-package lv.k2611a.testapp.services;
+package lv.j2304z.testapp.services;
 
 
-import lv.k2611a.testapp.services.exceptions.*;
+import lv.j2304z.testapp.services.exceptions.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import lv.k2611a.testapp.domain.User;
+import lv.j2304z.testapp.domain.User;
 
 import javax.annotation.PostConstruct;
 import java.io.IOException;

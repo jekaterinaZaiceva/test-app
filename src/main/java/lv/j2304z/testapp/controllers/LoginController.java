@@ -1,11 +1,10 @@
-package lv.k2611a.testapp.controllers;
+package lv.j2304z.testapp.controllers;
 
-import lv.k2611a.testapp.domain.LoginInfo;
-import lv.k2611a.testapp.domain.User;
-import lv.k2611a.testapp.services.UserService;
-import lv.k2611a.testapp.services.exceptions.IncorrectPasswordException;
-import lv.k2611a.testapp.services.exceptions.UserNotFoundException;
-import lv.k2611a.testapp.sessions.CurrentUser;
+import lv.j2304z.testapp.domain.User;
+import lv.j2304z.testapp.services.UserService;
+import lv.j2304z.testapp.services.exceptions.IncorrectPasswordException;
+import lv.j2304z.testapp.services.exceptions.UserNotFoundException;
+import lv.j2304z.testapp.sessions.CurrentUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

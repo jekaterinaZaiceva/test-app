@@ -1,4 +1,4 @@
-package lv.k2611a.testapp.domain;
+package lv.j2304z.testapp.domain;
 
 import java.io.Serializable;
 import java.util.ArrayList;

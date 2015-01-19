@@ -1,8 +1,8 @@
-package lv.k2611a.testapp.services;
+package lv.j2304z.testapp.services;
 
-import lv.k2611a.testapp.services.exceptions.DublicatedSymbolException;
-import lv.k2611a.testapp.services.exceptions.SmallPasswodsException;
-import lv.k2611a.testapp.services.exceptions.UserAlreadyExistException;
+import lv.j2304z.testapp.services.exceptions.DublicatedSymbolException;
+import lv.j2304z.testapp.services.exceptions.SmallPasswodsException;
+import lv.j2304z.testapp.services.exceptions.UserAlreadyExistException;
 import org.junit.Before;
 import org.junit.Test;
 
