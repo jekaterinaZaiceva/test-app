@@ -7,11 +7,11 @@ import org.junit.Before;
 import org.junit.Test;
 
 public class UserServiceTest {
-    PasswordCheckServise passwordCheckServise;
+    PasswordCheckService passwordCheckServise;
 
     @Before
     public void setup(){
-        passwordCheckServise = new PasswordCheckServise();
+        passwordCheckServise = new PasswordCheckService();
 
     }
     @Test(expected = SmallPasswodsException.class)

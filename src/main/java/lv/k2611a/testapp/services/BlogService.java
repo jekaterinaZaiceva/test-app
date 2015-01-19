@@ -1,6 +1,8 @@
 package lv.k2611a.testapp.services;
 
 import lv.k2611a.testapp.domain.Blog;
+import org.slf4j.Marker;
+import org.slf4j.MarkerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
@@ -8,20 +10,23 @@ import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.*;
 import java.util.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * сервис блоков
  */
 @Service
-public class BlogService implements Serializable {
+public class BlogService {
 
+    private static final Logger logger = LoggerFactory.getLogger(BlogService.class);
     public static final String DATA_DB = "data.db";
     private Map<Long, Blog> blogs;
     private long blogId;
 
     @PostConstruct
 
-        public void init() throws IOException, ClassNotFoundException {
+        public void init() throws ClassNotFoundException {
         try {
             FileInputStream fis = new FileInputStream(new File(DATA_DB));
             BufferedInputStream bis = new BufferedInputStream(fis);
@@ -30,14 +35,14 @@ public class BlogService implements Serializable {
             blogId = (Long)ois.readObject();
             ois.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Произошла ошибка при сохранении действий",e);
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
     }
 
     @PreDestroy
-    public void save() throws IOException {
+    public void save() {
         try {
             FileOutputStream fos = new FileOutputStream(new File(DATA_DB));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -45,7 +50,7 @@ public class BlogService implements Serializable {
             oos.writeObject((Long) blogId);
             oos.close();
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.error("Произошла ошибка при сохранении действий",e);
         }
     }
 

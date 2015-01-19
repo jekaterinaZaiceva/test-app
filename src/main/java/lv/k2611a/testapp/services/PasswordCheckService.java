@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
  */
 
 @Component
-public class PasswordCheckServise {
+public class PasswordCheckService {
 
 
     public void check(String password) throws DublicatedSymbolException, SmallPasswodsException {

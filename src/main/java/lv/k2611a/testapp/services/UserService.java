@@ -18,7 +18,7 @@ public class UserService {
     @Autowired
     BlogService blogService;
     @Autowired
-    private PasswordCheckServise passwordCheckServise;
+    private PasswordCheckService passwordCheckServise;
 
     private Map<Long, User> userById;
     private Map<String, User> userByName;
@@ -83,11 +83,12 @@ public class UserService {
 
     }
     public void registerUser(String userName, String password) throws UserAlreadyExistException, DublicatedSymbolException, SmallPasswodsException {
-        Long id= currentUserId++;
+
         if (userByName.containsKey(userName)) {
             throw new UserAlreadyExistException();
         }
         passwordCheckServise.check(password);
+        long id= currentUserId++;
         User user = new User(id,userName,password);
         userById.put(id, user);
         userByName.put(userName, user);
