@@ -1,9 +1,6 @@
-package lv.k2611a.testapp.services;
+package lv.j2304z.testapp.services;
 
-import lv.k2611a.testapp.domain.Blog;
-import org.slf4j.Marker;
-import org.slf4j.MarkerFactory;
-import org.springframework.stereotype.Component;
+import lv.j2304z.testapp.domain.Blog;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -26,7 +23,8 @@ public class BlogService {
 
     @PostConstruct
 
-        public void init() throws ClassNotFoundException {
+        public void init() {
+
         try {
             FileInputStream fis = new FileInputStream(new File(DATA_DB));
             BufferedInputStream bis = new BufferedInputStream(fis);
@@ -35,9 +33,9 @@ public class BlogService {
             blogId = (Long)ois.readObject();
             ois.close();
         } catch (IOException e) {
-            logger.error("Произошла ошибка при сохранении действий",e);
+            logger.error("Произошла ошибка при сохранении действий", e);
         } catch (ClassNotFoundException e) {
-            e.printStackTrace();
+            logger.error("Произошла ошибка, класс не найден", e);
         }
     }
 
@@ -47,7 +45,7 @@ public class BlogService {
             FileOutputStream fos = new FileOutputStream(new File(DATA_DB));
             ObjectOutputStream oos = new ObjectOutputStream(fos);
             oos.writeObject(blogs);
-            oos.writeObject((Long) blogId);
+            oos.writeObject((long) blogId);
             oos.close();
         } catch (IOException e) {
             logger.error("Произошла ошибка при сохранении действий",e);
@@ -109,7 +107,6 @@ public class BlogService {
         for (Blog blog : allByUser) {
             blogs.remove(blog.getBlogId());
         }
-        allByUser.clear();
         save();
     }
 }
