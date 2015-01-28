@@ -10,29 +10,29 @@
         <head>
             <link rel="stylesheet" href="/test-mvn-app/resources/css/reset.css"/>
             <link rel="stylesheet" href="/test-mvn-app/resources/css/main.css"/>
+            <link rel="stylesheet" href="/test-mvn-app/resources/css/login.css"/>
         </head>
 <body>
-    <div class="username">
-            <span class="my_name">Приветствуем, Вас следует залогинится</span>
-    </div>
-
-     <div class="content">
-        <form:form method="POST" action="login" role="form">
-            <div class="login-form">
-                <label for="userName">Логин</label>
-                <input type="text" name="userName" value="" id="userName"/>
-            </div>
-            <div class="login-form">
-                <label for="password">Пароль</label>
-                <input type="password" name="password" value="" id="password"/>
-            </div>
-            <input class="btn btn-default" type="submit" value="Логин"/>
-        </form:form>
+    <div class="container">
+    	<section id="content">
+            <form:form method="POST" action="login" role="form">
+                <h1>Форма логина</h1>
+                <div>
+                    <label for="userName">Логин</label>
+                    <input type="text" name="userName" value="" id="userName"/>
+                </div>
+                <div>
+                    <label for="password">Пароль</label>
+                    <input type="password" name="password" value="" id="password"/>
+                </div>
+                <div>
+                    <input type="submit" value="Логин"/>
+                </div>
+            </form:form>
+         </section>
     </div>
    <c:if test="${not empty error}">
         <div>${error}</div>
    </c:if>
-
-
 </body>
 </html>
