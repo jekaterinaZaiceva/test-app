@@ -22,7 +22,7 @@
             <span class="add_blog">Добавить блог:</span>
             <form action="" method="POST">
                     <label class="formname">Название блога:</label>
-                        <input type="blogName" name="blogName" class="form_text"><br>
+                        <input type="text" name="blogName" class="form_text"><br>
                         <input type="submit" value="Отправить" class="formbutton">
             </form>
         </div>
@@ -30,11 +30,17 @@
             <div class="my_blogs">Мои блоги:</div>
             <ul class="blogName">
                 <c:forEach var="blog" items="${blogs}">
-                    <li>
                         <a href = "/test-mvn-app/user/${blog.userId}/blog/${blog.blogId}">
                             ${blog.name}
                          </a>
-                    </li>
+
+                        <div class="edit">
+                            <form action="" method="POST">
+                                <input type="hidden" name="blogId" value = "${blog.blogId}"><br>
+                                <input type="text" name="blogName" value = "${blog.name}"><br>
+                                <input type="submit" value="Редактировать" class="formbutton">
+                            </form>
+                        </div>
                 </c:forEach>
             </ul>
          </div>

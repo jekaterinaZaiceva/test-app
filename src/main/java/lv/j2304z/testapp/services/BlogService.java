@@ -22,8 +22,7 @@ public class BlogService {
     private long blogId;
 
     @PostConstruct
-
-        public void init() {
+    public void init() {
 
         try {
             FileInputStream fis = new FileInputStream(new File(DATA_DB));
@@ -106,6 +105,18 @@ public class BlogService {
 
         for (Blog blog : allByUser) {
             blogs.remove(blog.getBlogId());
+        }
+        save();
+    }
+
+    public void editBlog(String blogName, long blogId, long userId) {
+        List<Blog> allByUser = getAllByUser(userId);
+
+        for (Blog blog : allByUser) {
+            long editBlogId = blog.getBlogId();
+            if (editBlogId==blogId){
+                blog.setName(blogName);
+            }
         }
         save();
     }

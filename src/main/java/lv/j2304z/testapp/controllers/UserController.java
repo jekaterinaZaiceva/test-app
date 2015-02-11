@@ -42,13 +42,28 @@ public class UserController {
         return "user";
     }
 
-    @RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)
+/*    @RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)
     public String addBlog(
             Model model,
             @PathVariable long userId,
             @RequestParam("blogName") String blogName) throws IOException {
         blogService.addBlog(blogName, userId);
 
+        return getUserPage(model, userId);
+    }*/
+
+    @RequestMapping(value = "/user/{userId}", method = RequestMethod.POST)
+    public String editBlog(
+            Model model,
+            @PathVariable long userId,
+            @RequestParam("blogId") Long blogId,
+            @RequestParam("blogName") String blogName) throws IOException {
+        if(blogId == null){
+            blogService.addBlog(blogName, userId);
+        }
+        else{
+            blogService.editBlog(blogName, blogId, userId);
+        }
         return getUserPage(model, userId);
     }
 

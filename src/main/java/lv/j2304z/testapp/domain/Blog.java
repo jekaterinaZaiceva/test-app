@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Blog implements Serializable {
+    static final long serialVersionUID = -2077650952021570622L;
+
     private String name;
     private long userId;
     private long blogId;
@@ -30,6 +32,10 @@ public class Blog implements Serializable {
 
     public void setBlogId(long blogId) {
         this.blogId = blogId;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List getTextList() {

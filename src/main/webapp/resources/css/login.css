@@ -57,7 +57,7 @@ h1{
     	padding: 15px 10px 15px 40px;
     	width: 80%;
     }
-    }
+
     #username { background-position: 10px 10px }
     #password { background-position: 10px -53px  }
     #content form input[type="submit"] {
