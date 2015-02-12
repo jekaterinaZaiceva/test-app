@@ -35,7 +35,7 @@
                          </a>
 
                         <div class="edit">
-                            <form action="" method="POST">
+                            <form action="/test-mvn-app/user/${blog.userId}/edit/${blog.blogId}" method="POST">
                                 <input type="hidden" name="blogId" value = "${blog.blogId}"><br>
                                 <input type="text" name="blogName" value = "${blog.name}"><br>
                                 <input type="submit" value="Редактировать" class="formbutton">

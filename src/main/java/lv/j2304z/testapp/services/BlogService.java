@@ -110,14 +110,16 @@ public class BlogService {
     }
 
     public void editBlog(String blogName, long blogId, long userId) {
-        List<Blog> allByUser = getAllByUser(userId);
-
-        for (Blog blog : allByUser) {
-            long editBlogId = blog.getBlogId();
-            if (editBlogId==blogId){
-                blog.setName(blogName);
-            }
+        if (blogName == null) {
+            throw new IllegalArgumentException("Empty text");
         }
-        save();
+        Blog blog = getBlogById(blogId);
+        if (blog.getUserId() == userId) {
+            blog.setName(blogName);
+            save();
+        } else {
+            throw new IllegalArgumentException("Wrong user id");
+        }
+
     }
 }
