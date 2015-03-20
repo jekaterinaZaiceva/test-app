@@ -65,7 +65,7 @@ public class UserController {
 
     @RequestMapping(value = "/users", method = RequestMethod.GET)
     public String getallUsersPage(Model model) {
-        Map<Long, User> users = userService.getAll();
+        List<User> users = userService.getAllUsers();
         model.addAttribute("users", users);
 
         return "allUser";
@@ -78,6 +78,5 @@ public class UserController {
         userService.deleteUser(userId);
         return getallUsersPage(model);
     }
-
 
 }

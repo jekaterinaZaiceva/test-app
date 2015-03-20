@@ -8,24 +8,29 @@
 <html>
         <head>
             <link rel="stylesheet" href="/test-mvn-app/resources/css/reset.css"/>
-            <link rel="stylesheet" href="/test-mvn-app/resources/css/main.css"/>
+            <%--<link rel="stylesheet" href="/test-mvn-app/resources/css/main.css"/>--%>
+            <link rel="stylesheet" href="/test-mvn-app/resources/css/createBlog.css"/>
         </head>
     <body>
-        <div class="username"><span class="my_name">Приветствуем - ${user.name}</span></div>
-        <div class="back">
-            <form action="/test-mvn-app/logout" method="POST">
-                 <input type="submit" value="Выйти" class="back">
-            </form>
-        </div>
-        <div class="my_blogs"><a href = "/test-mvn-app/users" class="back_text">Все пользователи</a></div>
-        <div class="side_bar">
-            <span class="add_blog">Добавить блог:</span>
-            <form action="" method="POST">
-                    <label class="formname">Название блога:</label>
-                        <input type="text" name="blogName" class="form_text"><br>
-                        <input type="submit" value="Отправить" class="formbutton">
-            </form>
-        </div>
+    <jsp:include page="toolbar.jsp"/>
+    <jsp:include page="header.jsp"/>
+
+        <div class="background">
+
+
+
+                    <a href="#" onclick="openPopUp(); return false;"><div class="button">Создать новую тему</div></a>
+
+
+       
+        <%--<div class="side_bar">--%>
+            <%--<span class="add_blog">Добавить блог:</span>--%>
+            <%--<form action="" method="POST">--%>
+                    <%--<label class="formname">Название блога:</label>--%>
+                        <%--<input type="text" name="blogName" class="form_text"><br>--%>
+                        <%--<input type="submit" value="Отправить" class="formbutton">--%>
+            <%--</form>--%>
+        <%--</div>--%>
         <div class="content">
             <div class="my_blogs">Мои блоги:</div>
             <ul class="blogName">
@@ -43,7 +48,31 @@
                         </div>
                 </c:forEach>
             </ul>
-         </div>
 
+            </div>
+
+            <div class="popUp_w __close" id="popUp">
+                <div class="popUp">
+                    <div class="popUp_cnt">
+                        <div class="popUp_actions">
+                            <a href="#" onclick="closePopUp(); return false;"><img src="/test-mvn-app/resources/images/close.png"></a>
+                        </div>
+                        <div class="popUp_t"><h1>Добавить блог:</h1></div>
+                        <div class="popUp_tx">
+                            <form action="" method="POST">
+                                Название блога: <input type="text" maxlength=150 name="blogName"><br>
+
+                                <input type="submit" value="Создать"/></form>
+                        </div>
+                        <div class="popUp_error">
+                            <c:if test="${not empty error}">
+                                <p>${error}</p>
+                            </c:if>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="/test-mvn-app/resources/js/script.js"></script>
     </body>
 </html>

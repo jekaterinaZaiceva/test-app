@@ -1,12 +1,15 @@
 package lv.j2304z.testapp.services;
 
 import lv.j2304z.testapp.domain.Blog;
+import lv.j2304z.testapp.sessions.CurrentUser;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import java.io.*;
 import java.util.*;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,6 +18,9 @@ import org.slf4j.LoggerFactory;
  */
 @Service
 public class BlogService {
+
+    @Autowired
+    CurrentUser currentUser;
 
     private static final Logger logger = LoggerFactory.getLogger(BlogService.class);
     public static final String DATA_DB = "data.db";
@@ -29,7 +35,7 @@ public class BlogService {
             BufferedInputStream bis = new BufferedInputStream(fis);
             ObjectInputStream ois = new ObjectInputStream(bis);
             blogs = (HashMap<Long, Blog>) ois.readObject();
-            blogId = (Long)ois.readObject();
+            blogId = (Long) ois.readObject();
             ois.close();
         } catch (IOException e) {
             logger.error("Произошла ошибка при сохранении действий", e);
@@ -47,7 +53,7 @@ public class BlogService {
             oos.writeObject((long) blogId);
             oos.close();
         } catch (IOException e) {
-            logger.error("Произошла ошибка при сохранении действий",e);
+            logger.error("Произошла ошибка при сохранении действий", e);
         }
     }
 
@@ -75,7 +81,7 @@ public class BlogService {
         return blogs.get(blogIndex);
     }
 
-    public void addBlog(String blogName, long userId) throws IOException{
+    public void addBlog(String blogName, long userId) throws IOException {
         if (blogName == null) {
             throw new IllegalArgumentException("Empty text");
         }
@@ -110,16 +116,21 @@ public class BlogService {
     }
 
     public void editBlog(String blogName, long blogId, long userId) {
-        if (blogName == null) {
-            throw new IllegalArgumentException("Empty text");
-        }
-        Blog blog = getBlogById(blogId);
-        if (blog.getUserId() == userId) {
-            blog.setName(blogName);
-            save();
-        } else {
-            throw new IllegalArgumentException("Wrong user id");
-        }
+        long id = currentUser.getId();
+        if (currentUser.getId() == userId) {
+            if (blogName == null) {
+                throw new IllegalArgumentException("Empty text");
+            }
+            Blog blog = getBlogById(blogId);
+            if (blog.getUserId() == userId) {
+                blog.setName(blogName);
+                save();
+            } else {
+                throw new IllegalArgumentException("Wrong user id");
+            }
 
+        } else {
+            throw new IllegalArgumentException("can't edit blog");
+        }
     }
 }

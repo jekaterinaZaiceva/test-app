@@ -1,4 +1,22 @@
+.header{
+    max-width:1495px;
+    height:282px;
+    margin: auto;
+    background-image: url(/test-mvn-app/resources/images/header.jpg);
+}
 
+.background{
+    max-width:1495px;
+    height:2000px;
+    margin: auto;
+    background-image: url(/test-mvn-app/resources/images/background.jpg);
+
+
+}
+.logo a{
+    float:left;
+    margin:20px 34px 10px 60px;
+}
 .username{
         text-align:  center;
         font-size: 200%;
@@ -35,14 +53,6 @@
                 border: 5px solid green;
                 padding: 3px;
                 }
-.back{
-        font-size:20px;
-        text-align: right;
-        margin: 10px 10px;
-        }
-    .back_text{
-            color:green;
-            }
 
 .blog_text{
         margin: 10px 10px;

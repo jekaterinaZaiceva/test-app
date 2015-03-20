@@ -11,6 +11,10 @@
             <link rel="stylesheet" href="/test-mvn-app/resources/css/main.css"/>
         </head>
     <body>
+    <jsp:include page="toolbar.jsp"/>
+    <jsp:include page="header.jsp"/>
+
+    <div class="background">
         <div class="username">
             <span class="my_name">Все пользователи</span>
         </div>
@@ -30,7 +34,7 @@
 
                 </c:forEach>
             </div>
-
+        </div>
 
     </body>
 </html>

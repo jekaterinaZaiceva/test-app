@@ -13,6 +13,10 @@
     </head>
 
     <body>
+    <jsp:include page="toolbar.jsp"/>
+    <jsp:include page="header.jsp"/>
+
+    <div class="background">
         <div class="username">
             <span class="my_name">Я - ${user.name}</span>
         </div>
@@ -37,5 +41,6 @@
 
 
          </div>
+        </div>
     </body>
 </html>
