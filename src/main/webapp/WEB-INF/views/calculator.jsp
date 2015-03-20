@@ -15,10 +15,13 @@
 <script>
     var lastValue;
     var LastOperation;
+    var LastSimbol;
 
     function addSymbol(buttonValue){
         console.log("adding simbol"+ buttonValue);
+        if(LastSimbol===null){clearInput();}
         document.getElementById('calc_value').value +=buttonValue;
+        LastSimbol=undefined;
     }
     function clearInput(){
         document.getElementById('calc_value').value ='';
@@ -47,6 +50,8 @@
 
         else {alert("Результат получлся лажей")}
         document.getElementById('calc_value').value = result;
+        LastSimbol=null;
+
     }
     function addOperation(buttonValue){
         lastValue= document.getElementById('calc_value').value;
@@ -73,7 +78,7 @@
                 <input type="button" value="3" onclick="addSymbol('3');"></p>
                 <p><input type="button" value="+" onclick="addOperation('+');">
                 <input type="button" value="0" onclick="addSymbol('0');">
-                <input type="button" value="." onclick="addSymbol('3');">
+                <input type="button" value="." onclick="addSymbol('.');">
                 <input type="button" value="=" onclick="calculate();"></p>
                 <input type="button" value="c" onclick="clearInput();">
             </div>
