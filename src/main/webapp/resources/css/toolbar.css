@@ -1,0 +1,39 @@
+
+.toolbar {
+
+    position: fixed;
+    left: 204px;
+    right: 204px;
+    max-width: 1495px;
+    height: 55px;
+    font-size: 40px;
+    font-family: Arial;
+    text-transform: uppercase;
+    /*background-image: url(/test-mvn-app/resources/images/toolbar2.jpg);*/
+
+
+}
+.toolbar_buttons {
+    padding: 10px 0px 1px 30px;
+    font-size: 12px;
+    color:#070727;
+
+}
+.navigation {
+    float:left;
+    display:inline-block;
+    width: 200px;
+    left:30px;
+}
+
+.back{
+    display:inline-block;
+    font-size:20px;
+    float:right;
+}
+.userName{
+    display: inline-block;
+    font-size: 20px;
+    float:right;
+    padding: 5px 30px 1px 0px
+}

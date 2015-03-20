@@ -1,0 +1,16 @@
+.calculator{
+    padding: 100px;
+}
+.calculator{
+    width:400px;
+    height:30px;
+}
+.keys
+{
+    position:relative;
+    top:15px;
+}
+p
+{
+    line-height:30px;
+}
