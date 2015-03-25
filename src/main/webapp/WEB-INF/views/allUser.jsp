@@ -21,13 +21,13 @@
 
             <div class="users">
                 <c:forEach var="user" items="${users}">
-                        <a href = "/test-mvn-app/user/${user.value.id}">
-                            ${user.value.name}
+                        <a href = "/test-mvn-app/user/${user.id}">
+                            ${user.name}
                          </a>
 
                     <div class="delete">
                         <form action="" method="POST">
-                              <input type="hidden" name="userId" value = "${user.value.id}"><br>
+                              <input type="hidden" name="userId" value = "${user.id}"><br>
                               <input type="submit" value="Удалить" class="formbutton">
                         </form>
                     </div>

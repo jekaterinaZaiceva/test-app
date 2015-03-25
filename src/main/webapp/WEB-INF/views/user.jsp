@@ -8,7 +8,6 @@
 <html>
         <head>
             <link rel="stylesheet" href="/test-mvn-app/resources/css/reset.css"/>
-            <%--<link rel="stylesheet" href="/test-mvn-app/resources/css/main.css"/>--%>
             <link rel="stylesheet" href="/test-mvn-app/resources/css/createBlog.css"/>
         </head>
     <body>
@@ -21,16 +20,6 @@
 
                     <a href="#" onclick="openPopUp(); return false;"><div class="button">Создать новую тему</div></a>
 
-
-       
-        <%--<div class="side_bar">--%>
-            <%--<span class="add_blog">Добавить блог:</span>--%>
-            <%--<form action="" method="POST">--%>
-                    <%--<label class="formname">Название блога:</label>--%>
-                        <%--<input type="text" name="blogName" class="form_text"><br>--%>
-                        <%--<input type="submit" value="Отправить" class="formbutton">--%>
-            <%--</form>--%>
-        <%--</div>--%>
         <div class="content">
             <div class="my_blogs">Мои блоги:</div>
             <ul class="blogName">
