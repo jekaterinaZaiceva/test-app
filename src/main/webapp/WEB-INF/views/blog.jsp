@@ -32,7 +32,7 @@
          </div>
          <div class="content">
             <div class="blog_text">
-                <c:forEach var="blog" items="${blog.textList}">
+                <c:forEach var="blog" items="${blog.text}">
                                 <li>
                                         ${blog}
                                 </li>

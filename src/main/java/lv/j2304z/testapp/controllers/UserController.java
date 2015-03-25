@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 
 /**
@@ -58,7 +57,7 @@ public class UserController {
             @PathVariable long userId,
             @PathVariable long blogId,
             @RequestParam("blogName") String blogName) throws IOException {
-            blogService.editBlog(blogName, blogId, userId);
+            blogService.editBlogName(blogName, blogId, userId);
 
         return getUserPage(model, userId);
     }

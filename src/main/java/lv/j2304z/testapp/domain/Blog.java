@@ -10,7 +10,7 @@ public class Blog implements Serializable {
     private String name;
     private long userId;
     private long blogId;
-    private List<String> textList = new ArrayList<String>();
+    private String text;
 
     public Blog(String name, long userId) {
         this.name = name;
@@ -23,7 +23,10 @@ public class Blog implements Serializable {
         }
         this.name = name;
         this.userId = userId;
-        this.textList.add(text);
+        this.text = text;
+    }
+    public Blog(){
+
     }
 
     public long getBlogId() {
@@ -38,19 +41,8 @@ public class Blog implements Serializable {
         this.name = name;
     }
 
-    public List getTextList() {
-        return textList;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setText(String text) {
-        if (text == null) {
-            throw new IllegalArgumentException("Text cannot be null");
-        }
-        this.textList.add(text);
     }
 
     public long getUserId() {
@@ -59,5 +51,12 @@ public class Blog implements Serializable {
 
     public void setUserId(long userId) {
         this.userId = userId;
+    }
+
+    public String getText() {
+        return text;
+    }
+    public void setText(String text){
+        this.text = text;
     }
 }
