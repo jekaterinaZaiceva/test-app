@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="/test-mvn-app/resources/css/calculator.css"/>
 </head>
 <body>
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
 <script>
     var lastValue;
     var LastOperation;
@@ -58,6 +59,25 @@
         clearInput();
         lastOperation=buttonValue;
     }
+    function weather() {
+        $.get( "weather",
+                function(data) {
+                    document.getElementById('temperature_value').value
+                            =  data.temperature;
+                }
+        );
+    }
+    function toUSD() {
+        $.get( "http://api.fixer.io/latest",
+                function(data) {
+                    document.getElementById('calc_value').value
+                            = document.getElementById('calc_value').value
+                            * data.rates.USD;
+                }
+        );
+    }
+
+
 </script>
 <div class="calculator">
     <div>Калькулятор</div>
@@ -74,14 +94,19 @@
                 <input type="button" value="6" onclick="addSymbol('6');"></p>
                 <p><input type="button" value="-" onclick="addOperation('-');">
                 <input type="button" value="1" onclick="addSymbol('1');">
-                    <input type="button" value="2" onclick="addSymbol('2');">
+                <input type="button" value="2" onclick="addSymbol('2');">
                 <input type="button" value="3" onclick="addSymbol('3');"></p>
                 <p><input type="button" value="+" onclick="addOperation('+');">
                 <input type="button" value="0" onclick="addSymbol('0');">
                 <input type="button" value="." onclick="addSymbol('.');">
                 <input type="button" value="=" onclick="calculate();"></p>
                 <input type="button" value="c" onclick="clearInput();">
+                <input type="button" onclick="toUSD();" value="toUSD"/>
+                <input id="temperature_value" type="text">
+                <input type="button" onclick="weather();" value="weather"/>
+
             </div>
+
     </div>
 </div>
 
