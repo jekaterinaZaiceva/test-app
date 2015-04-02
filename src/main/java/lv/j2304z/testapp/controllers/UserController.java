@@ -2,17 +2,17 @@ package lv.j2304z.testapp.controllers;
 
 import lv.j2304z.testapp.domain.Blog;
 import lv.j2304z.testapp.domain.User;
+import lv.j2304z.testapp.dto.UserDTO;
+import lv.j2304z.testapp.dto.UsersResponse;
 import lv.j2304z.testapp.services.BlogService;
 import lv.j2304z.testapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -78,4 +78,34 @@ public class UserController {
         return getallUsersPage(model);
     }
 
+        @RequestMapping(method = RequestMethod.GET, value = "/usersJson")
+        public @ResponseBody
+        UsersResponse getUsers(Model model) {
+            List<User> users = userService.getAllUsers();
+            return convertToDto(users);
+        }
+         private UsersResponse convertToDto(List<User> users){
+             UsersResponse result = new UsersResponse();
+             result.setUsers(convertUsers(users));
+             return result;
+         }
+
+    private List<UserDTO> convertUsers(List<User> users) {
+        List<UserDTO> result = new ArrayList<UserDTO>();
+        for (User user : users) {
+            result.add(convertToUser(user));
+        }
+        return result;
+    }
+
+    private UserDTO convertToUser(User user) {
+        UserDTO result = new UserDTO();
+        result.setName(user.getName());
+        return result;
+    }
+
+    @RequestMapping(value = "/usersJs", method = RequestMethod.GET)
+        public String getUserFromJson() {
+            return "usersJs";
+        }
 }

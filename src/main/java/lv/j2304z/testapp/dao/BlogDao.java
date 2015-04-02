@@ -42,7 +42,7 @@ public class BlogDao {
 
     public List<Blog> getAllByUser(long userId) {
         List<Blog> result = this.jdbcTemplate.query(
-                "select id, name, userId, text from blogs where userId = ?",
+                "select id, name, userId,text from blogs INNER JOIN blog_text on blogs.id = blog_text.blog_id AND userId =?",
                 rowMapper,
                 userId
         );
@@ -54,7 +54,7 @@ public class BlogDao {
     public Blog getBlogById(long blogId) {
 
         List<Blog> result = this.jdbcTemplate.query(
-                "select id, name, userId, text from blogs where id = ?",
+                "select id, name, userId, text from blogs INNER JOIN blog_text on blogs.id = blog_text.blog_id= ? ",
                 rowMapper,
                 blogId
         );
@@ -64,21 +64,21 @@ public class BlogDao {
         return result.get(0);
     }
 
-    public void addBlogText(String blogText, long blogId) {
+    public void addBlogText(Blog blog) {
         this.jdbcTemplate.update(
-                "update blogs set text=? where id = ?",
-                blogText,
-                blogId
+                "insert into blog_text (blog_id,text) values(?, ?)",
+                blog.getBlogId(),
+                blog.getText()
         );
     }
 
     public void deleteUserBlogs(long userId) {
-        jdbcTemplate.update("DELETE FROM blobs WHERE user_id=?", userId);
+        jdbcTemplate.update("DELETE FROM blogs WHERE user_id=?", userId);
     }
 
     public void editBlogName(String blogName, long blogId) {
         this.jdbcTemplate.update(
-                "update blogs set name=? where id = ?",
+                "update blog_text set name=? where blog_id = ?",
                 blogName,
                 blogId
         );

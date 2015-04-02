@@ -17,9 +17,6 @@
     <jsp:include page="header.jsp"/>
 
     <div class="background">
-        <div class="username">
-            <span class="my_name">Я - ${user.name}</span>
-        </div>
         <div class="my_blogs"><a href = "/test-mvn-app/user/${blog.userId}" class="back_text">${blog.name}</a></div>
         <div class="back"><a href = "/test-mvn-app/user/${blog.userId}" class="back_text">Вернутся</a></div>
         <div class="side_bar">

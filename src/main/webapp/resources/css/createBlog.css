@@ -11,6 +11,7 @@
 }
 .popUp_w.__close {
     display: none;
+
 }
 .popUp_w:after {
     content: "";

@@ -17,12 +17,13 @@
         <div class="background">
 
 
-
+                <div class="create_theme">
                     <a href="#" onclick="openPopUp(); return false;"><div class="button">Создать новую тему</div></a>
+                </div>
 
-        <div class="content">
+
             <div class="my_blogs">Мои блоги:</div>
-            <ul class="blogName">
+            <div class="blogName">
                 <c:forEach var="blog" items="${blogs}">
                         <a href = "/test-mvn-app/user/${blog.userId}/blog/${blog.blogId}">
                             ${blog.name}
@@ -36,13 +37,12 @@
                             </form>
                         </div>
                 </c:forEach>
-            </ul>
+            </div>
 
             </div>
 
             <div class="popUp_w __close" id="popUp">
                 <div class="popUp">
-                    <div class="popUp_cnt">
                         <div class="popUp_actions">
                             <a href="#" onclick="closePopUp(); return false;"><img src="/test-mvn-app/resources/images/close.png"></a>
                         </div>
@@ -58,10 +58,9 @@
                                 <p>${error}</p>
                             </c:if>
                         </div>
-                    </div>
                 </div>
             </div>
-    </div>
+
     <script src="/test-mvn-app/resources/js/script.js"></script>
     </body>
 </html>
