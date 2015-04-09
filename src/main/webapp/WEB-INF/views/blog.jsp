@@ -29,9 +29,9 @@
          </div>
          <div class="content">
             <div class="blog_text">
-                <c:forEach var="blog" items="${blog.text}">
+                <c:forEach var="blogText" items="${blogText}">
                                 <li>
-                                        ${blog}
+                                        ${blogText.text}
                                 </li>
                 </c:forEach>
             </div>

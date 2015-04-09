@@ -1,8 +1,10 @@
 package lv.j2304z.testapp.controllers;
 
 import lv.j2304z.testapp.domain.Blog;
+import lv.j2304z.testapp.domain.BlogText;
 import lv.j2304z.testapp.domain.User;
 import lv.j2304z.testapp.services.BlogService;
+import lv.j2304z.testapp.services.BlogTextService;
 import lv.j2304z.testapp.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.io.IOException;
+import java.util.List;
 
 
 /**
@@ -25,6 +28,8 @@ public class BlogsController {
     @Autowired
     private BlogService blogService;
     @Autowired
+    private BlogTextService blogTextService;
+    @Autowired
     private UserService userService;
 
     @RequestMapping(value = "/user/{userId}/blog/{blogId}")
@@ -36,10 +41,10 @@ public class BlogsController {
         model.addAttribute("user", user);
 
         Blog blog = blogService.getBlogById(blogId);
-        if (blog == null) {
-            return "404";
-        }
         model.addAttribute("blog", blog);
+
+        List<BlogText> blogText = blogTextService.getBlogTextByBlogId(blogId);
+        model.addAttribute("blogText", blogText);
         return "blog";
     }
 
@@ -48,7 +53,7 @@ public class BlogsController {
                               @PathVariable long userId,
                               @PathVariable long blogId,
                               @RequestParam("blogText") String blogText) throws IOException {
-        blogService.addBlogText(blogId, userId, blogText);
+        blogTextService.addBlogText(blogId, userId, blogText);
 
         return getBlogPage(model, userId, blogId);
     }

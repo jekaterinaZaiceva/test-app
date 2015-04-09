@@ -35,6 +35,7 @@ public class UserController {
             return "404";
         }
         List<Blog> blogs = blogService.getAllByUser(userId);
+
         model.addAttribute("user", user);
         model.addAttribute("blogs", blogs);
 

@@ -10,7 +10,7 @@ public class Blog implements Serializable {
     private String name;
     private long userId;
     private long blogId;
-    private String text;
+    //private String text;
 
     public Blog(String name, long userId) {
         this.name = name;
@@ -23,7 +23,7 @@ public class Blog implements Serializable {
         }
         this.name = name;
         this.userId = userId;
-        this.text = text;
+        //this.text = text;
     }
     public Blog(){
 
@@ -53,10 +53,10 @@ public class Blog implements Serializable {
         this.userId = userId;
     }
 
-    public String getText() {
-        return text;
-    }
-    public void setText(String text){
-        this.text = text;
-    }
+    //public String getText() {
+      //  return text;
+    //}
+    //public void setText(String text){
+      //  this.text = text;
+    //}
 }

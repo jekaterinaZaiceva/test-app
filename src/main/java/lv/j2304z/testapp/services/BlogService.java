@@ -56,20 +56,6 @@ public class BlogService {
 
     }
 
-    public void addBlogText(long blogId, long userId, String blogText) throws IOException {
-        if (blogText == null) {
-            throw new IllegalArgumentException("Empty text");
-        }
-        Blog blog = blogDao.getBlogById(blogId);
-        blog.setText(blogText);
-
-        if (blog.getUserId() == userId) {
-            blogDao.addBlogText(blog);
-        } else {
-            throw new IllegalArgumentException("Wrong user id");
-        }
-    }
-
     public void editBlogName(String blogName, long blogId, long userId) {
         if (currentUser.getId() == userId) {
             if (blogName == null) {
