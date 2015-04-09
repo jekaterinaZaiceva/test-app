@@ -35,7 +35,6 @@ public class BlogDao {
             result.setBlogId(resultSet.getLong(1));
             result.setName(resultSet.getString(2));
             result.setUserId(resultSet.getLong(3));
-            //result.setText(resultSet.getString(4));
             return result;
         }
     };

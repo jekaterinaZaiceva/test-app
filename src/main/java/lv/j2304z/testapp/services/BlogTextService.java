@@ -42,15 +42,10 @@ public class BlogTextService {
             throw new IllegalArgumentException("Empty text");
         }
 
-
         Blog blog = blogDao.getBlogById(blogId);
-        //BlogText blogText = blogTextDao.getBlogTextByBlogId(blogId);
-
-        //blog.setText(blogText);
 
         if (blog.getUserId() == userId) {
             put(blogId,blogText);
-            //blogDao.addBlogText(blog);
         } else {
             throw new IllegalArgumentException("Wrong user id");
         }
