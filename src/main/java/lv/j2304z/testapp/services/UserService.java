@@ -85,6 +85,12 @@ public class UserService {
         userDao.addUser(user);
 
     }
+    public synchronized void registerUserDefaultPass(String userName) throws UserAlreadyExistException, DublicatedSymbolException, SmallPasswodsException {
+        String password = "defaultPass";
+        User user = new User(userName,password);
+        userDao.addUser(user);
+
+    }
 
     public synchronized List<User> getAllUsers(){
         return new ArrayList<User>(userDao.getAllUsers());

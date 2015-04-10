@@ -43,30 +43,22 @@
         $("#users").html("");
     }
 
-//    function addUser() {
-//        var userName = $("#userName").val();
-//        $.post("http://localhost:9090/test-mvn-app/addUser",
-//                {name : userName},
-//                function (data) {
-//                });
-//    }
-//
-//    function refreshPosts() {
-//        $.get( "http://localhost:9090/test-mvn-app/posts",
-//                function(data) {
-//                    var html = "";
-//
-//                    for (var i = 0; i < data.length; i++) {
-//                        html += "<span>";
-//                        html += data[i].text;
-//                        html += "</span>";
-//                        html += "<br>";
-//                    }
-//
-//                    $("#users").html(html);
-//                }
-//        );
-//    }
+    function addUser() {
+        var userName = $("#userName").val();
+        var userPassword = $("#password").val();
+        $.post("http://localhost:9090/test-mvn-app/addUser",
+                {userName : userName,
+                 password : userPassword})
+                .done(function (data) {
+                    $("#userName").val("");
+                    $("#password").val("");
+                    refresh();
+                })
+                .fail(function(xhr){
+                    alert("Fail with" +xhr.status);
+                })
+    }
+
 </script>
 
 <div class="background">
@@ -79,16 +71,17 @@
     <div id="calculator">
         <div class="keys">
             <input type="button" onclick="refresh();" value="refresh"/>
-            <%--<input type="button" onclick="refreshPosts();" value="refreshPosts"/>--%>
+
             <input type="button" onclick="clearDiv();" value="clear"/>
-            <%--<p><input id="calc_value" type="text" value=""></p>--%>
+
         </div>
     </div>
 
     <div>
-        <%--<p><input id="userName" type="text" value=""></p>--%>
-        <%--<input type="button" onclick="addUser();" value="addUser"/>--%>
-    <%--</div>--%>
+        <p><input id="userName" type="text" value=""></p>
+        <p>Ваш пароль  - defaultPass. Пожалуйста, зарегестрируйтесь через форму регистрации.</p>
+        <input type="button" onclick="addUser();" value="addUser"/>
+    </div>
 
 
 

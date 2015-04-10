@@ -13,6 +13,10 @@ public class UsersResponse {
     List<UserDTO> users = new ArrayList<UserDTO>();
 
 
+    public List<UserDTO> getUsers() {
+        return users;
+    }
+
     public void setUsers(List<UserDTO> users) {
         this.users = users;
     }

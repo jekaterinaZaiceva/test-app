@@ -6,6 +6,11 @@ import lv.j2304z.testapp.dto.UserDTO;
 import lv.j2304z.testapp.dto.UsersResponse;
 import lv.j2304z.testapp.services.BlogService;
 import lv.j2304z.testapp.services.UserService;
+import lv.j2304z.testapp.services.exceptions.DublicatedSymbolException;
+import lv.j2304z.testapp.services.exceptions.SmallPasswodsException;
+import lv.j2304z.testapp.services.exceptions.UserAlreadyExistException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +32,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
     public String getUserPage(Model model, @PathVariable Long userId) {
 
@@ -35,7 +41,6 @@ public class UserController {
             return "404";
         }
         List<Blog> blogs = blogService.getAllByUser(userId);
-
         model.addAttribute("user", user);
         model.addAttribute("blogs", blogs);
 
@@ -85,11 +90,24 @@ public class UserController {
             List<User> users = userService.getAllUsers();
             return convertToDto(users);
         }
-         private UsersResponse convertToDto(List<User> users){
-             UsersResponse result = new UsersResponse();
-             result.setUsers(convertUsers(users));
-             return result;
-         }
+
+
+    @RequestMapping(method = RequestMethod.POST, value = "/addUser")
+     @ResponseBody
+    UsersResponse addUsers(
+            Model model,
+            @RequestParam("userName") String userName
+
+    ) throws IOException, DublicatedSymbolException, UserAlreadyExistException, SmallPasswodsException {
+        userService.registerUserDefaultPass(userName);
+        return getUsers(model);
+    }
+
+    private UsersResponse convertToDto(List<User> users){
+        UsersResponse result = new UsersResponse();
+        result.setUsers(convertUsers(users));
+        return result;
+    }
 
     private List<UserDTO> convertUsers(List<User> users) {
         List<UserDTO> result = new ArrayList<UserDTO>();
