@@ -65,12 +65,12 @@ public class BlogDao {
 
 
     public void deleteUserBlogs(long userId) {
-        jdbcTemplate.update("DELETE FROM blogs WHERE user_id=?", userId);
+        jdbcTemplate.update("DELETE FROM blogs WHERE userId=?", userId);
     }
 
     public void editBlogName(String blogName, long blogId) {
         this.jdbcTemplate.update(
-                "update blog_text set name=? where blog_id = ?",
+                "update blogs set name=? where id = ?",
                 blogName,
                 blogId
         );

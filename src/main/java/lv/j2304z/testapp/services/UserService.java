@@ -1,7 +1,6 @@
 package lv.j2304z.testapp.services;
 
 
-import lv.j2304z.testapp.dao.BlogDao;
 import lv.j2304z.testapp.dao.UserDao;
 import lv.j2304z.testapp.services.exceptions.*;
 import lv.j2304z.testapp.sessions.CurrentUser;
@@ -14,9 +13,7 @@ import lv.j2304z.testapp.domain.User;
 import javax.annotation.PostConstruct;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 
 @Service
